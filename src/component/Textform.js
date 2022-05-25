@@ -30,16 +30,23 @@ export default function Textform(props) {
                 <textarea className="form-control" onChange={handleOnchange} value={text} id="box" rows="8"></textarea>
             </div>
             <div className="container">
-            <button className="btn btn-primary" onClick={handleOnclick} >Convert to uppercase</button>
-            <button className="btn btn-primary mx-1" onClick={convertLower} >Convert to lowercase</button>
-            <button className="btn btn-primary mx-1" onClick={clearText} >Clear text</button>
+            <button className={`btn btn-${props.Mode} border border-dark`} onClick={handleOnclick} >Convert to uppercase</button>
+            <button className={`btn btn-${props.Mode} mx-1 border border-dark`} onClick={convertLower} >Convert to lowercase</button>
+            <button className={`btn btn-${props.Mode} mx-1 border border-dark`} onClick={clearText} >Clear text</button>
             </div>
         </div>
         <div className="container mt-3">
             <h4>Your text summary</h4>
             <p> {text.split(" ").length-1} Words and {text.length} Characters </p>
         </div>
+        <div className="container">
+        <div className="form-check form-switch">
+          <input className="form-check-input" type="checkbox" onClick={props.toggleMode} role="switch" id="flexSwitchCheckDefault"/>
+          <label className="form-check-label" onClick={props.toggleMode} htmlFor="flexSwitchCheckDefault">Enable Dark Mode</label>
+        </div>
+        </div>
         </>
+        
     )
 }
 
