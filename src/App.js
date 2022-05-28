@@ -1,9 +1,16 @@
 import './App.css';
 import { useState } from 'react';
-// import About from './component/About';
+import About from './component/About';
 import Navbar from './component/Navbar';
 import Textform from './component/Textform';
 import Alert from './component/Alert';
+import React from 'react';
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 
 function App() {
@@ -37,12 +44,18 @@ function App() {
   }
   return (
     <>
+    <Router>
     <Navbar title="TextEditor" Mode={Mode}  />
     <Alert  alert={alert}  />
-    <div className="container my-5">
+      <Routes>
+          <Route path="/home" element={<div className="container my-5">
     <Textform heading="Editor" Mode={Mode} toggleMode={toggleMode} alert={alert}  showAlert={showAlert}/>
-    {/* <About/> */}
-    </div>
+    </div>} />
+          <Route path="/about" element={<div className="container my-5">
+    <About />
+    </div>} />
+    </Routes>
+      </Router>
     </>
   );
 }
