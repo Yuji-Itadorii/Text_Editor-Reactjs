@@ -7,14 +7,25 @@ export default function Textform(props) {
     const handleOnclick = ()=>{
         let newText = text.toUpperCase(); 
         setText(newText);
+        props.showAlert(" converted to upper case ! " , "success");
+
     }
     
     const convertLower = ()=>{
         let newtext = text.toLowerCase();
         setText(newtext);
+        props.showAlert(" converted to lower case ! " , "success");
     }
     const clearText = ()=>{
         setText("");
+        props.showAlert(" text cleared ! " , "success");
+    }
+    const copyText = ()=>{
+        var text = document.getElementById("box");
+        text.select();
+        navigator.clipboard.writeText(text.value);
+        props.showAlert(" text copied ! " , "success");
+
     }
 
     const handleOnchange = (event)=>{
@@ -33,6 +44,7 @@ export default function Textform(props) {
             <button className={`btn btn-${props.Mode} border border-dark`} onClick={handleOnclick} >Convert to uppercase</button>
             <button className={`btn btn-${props.Mode} mx-1 border border-dark`} onClick={convertLower} >Convert to lowercase</button>
             <button className={`btn btn-${props.Mode} mx-1 border border-dark`} onClick={clearText} >Clear text</button>
+            <button className={`btn btn-${props.Mode} mx-1 border border-dark`} onClick={copyText} >Copy text</button>
             </div>
         </div>
         <div className="container mt-3">
