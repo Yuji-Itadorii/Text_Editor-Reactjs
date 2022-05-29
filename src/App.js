@@ -16,6 +16,7 @@ import {
 function App() {
   const [Mode, setMode] = useState('light');
   const [alert, setalert] = useState(null);
+  const [textColor, settextColor] = useState("dark");
 
   const showAlert=(message , type)=>{
     setalert({
@@ -33,12 +34,14 @@ function App() {
       document.body.style.backgroundColor="black";
       document.body.style.color="white";
       showAlert("Dark Mode enabled" , "success");
+      settextColor("light");
     }
     else{
       setMode('light');
       document.body.style.backgroundColor="white";
       document.body.style.color="black";
       showAlert("Light Mode enabled" , "success");
+      settextColor("dark");
     }
   }
   return (
@@ -51,7 +54,7 @@ function App() {
     <Textform heading="Editor" Mode={Mode} toggleMode={toggleMode} alert={alert}  showAlert={showAlert}/>
     </div>} />
           <Route path="/about" element={<div className="container my-5">
-    <About toggleMode={toggleMode} Mode={Mode}/>
+    <About toggleMode={toggleMode} Mode={Mode} textColor={textColor}/>
     </div>} />
     </Routes>
       </Router>
