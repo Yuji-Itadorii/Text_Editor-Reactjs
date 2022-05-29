@@ -51,12 +51,7 @@ export default function Textform(props) {
             <h4>Your text summary</h4>
             <p> {text.split(" ").length-1} Words and {text.length} Characters </p>
         </div>
-        <div className="container">
-        <div className="form-check form-switch">
-          <input className="form-check-input" type="checkbox" onClick={props.toggleMode} role="switch" id="flexSwitchCheckDefault"/>
-          <label className="form-check-label" onClick={props.toggleMode} htmlFor="flexSwitchCheckDefault">Enable Dark Mode</label>
-        </div>
-        </div>
+        
         </>
         
     )

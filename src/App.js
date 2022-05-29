@@ -40,19 +40,18 @@ function App() {
       document.body.style.color="black";
       showAlert("Light Mode enabled" , "success");
     }
-    console.log("hello");
   }
   return (
     <>
     <Router>
-    <Navbar title="TextEditor" Mode={Mode}  />
+    <Navbar title="TextEditor" Mode={Mode}  toggleMode={toggleMode} />
     <Alert  alert={alert}  />
       <Routes>
-          <Route path="/home" element={<div className="container my-5">
+          <Route path="/" element={<div className="container my-5">
     <Textform heading="Editor" Mode={Mode} toggleMode={toggleMode} alert={alert}  showAlert={showAlert}/>
     </div>} />
           <Route path="/about" element={<div className="container my-5">
-    <About />
+    <About toggleMode={toggleMode} Mode={Mode}/>
     </div>} />
     </Routes>
       </Router>
