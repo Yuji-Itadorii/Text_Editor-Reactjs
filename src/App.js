@@ -17,6 +17,7 @@ function App() {
   const [Mode, setMode] = useState('light');
   const [alert, setalert] = useState(null);
   const [textColor, settextColor] = useState("dark");
+  const [text_dark, settext_dark] = useState("Dark");
 
   const showAlert=(message , type)=>{
     setalert({
@@ -35,6 +36,7 @@ function App() {
       document.body.style.color="white";
       showAlert("Dark Mode enabled" , "success");
       settextColor("light");
+      settext_dark("Light");
     }
     else{
       setMode('light');
@@ -42,12 +44,13 @@ function App() {
       document.body.style.color="black";
       showAlert("Light Mode enabled" , "success");
       settextColor("dark");
+      settext_dark("Dark");
     }
   }
   return (
     <>
     <Router>
-    <Navbar title="TextEditor" Mode={Mode}  toggleMode={toggleMode} />
+    <Navbar title="TextEditor" Mode={Mode}  toggleMode={toggleMode} text_dark={text_dark} />
     <Alert  alert={alert}  />
       <Routes>
           <Route path="/" element={<div className="container my-5">
